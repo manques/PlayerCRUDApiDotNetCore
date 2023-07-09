@@ -1,0 +1,197 @@
+2023-07-09 09:36:47.861 +05:30 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-07-09 09:36:47.947 +05:30 [DBG] Hosting starting
+2023-07-09 09:36:48.235 +05:30 [INF] Now listening on: https://localhost:7282
+2023-07-09 09:36:48.235 +05:30 [INF] Now listening on: http://localhost:5062
+2023-07-09 09:36:48.235 +05:30 [DBG] Loaded hosting startup assembly asp.netCoreWebApi
+2023-07-09 09:36:48.235 +05:30 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2023-07-09 09:36:48.235 +05:30 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2023-07-09 09:36:48.236 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2023-07-09 09:36:48.236 +05:30 [INF] Hosting environment: Development
+2023-07-09 09:36:48.236 +05:30 [INF] Content root path: D:\project8.1\learning\asp.netCoreWebApi\asp.netCoreWebApi
+2023-07-09 09:36:48.236 +05:30 [DBG] Hosting started
+2023-07-09 09:36:48.711 +05:30 [DBG] Connection id "0HMS067LFL8L7" received FIN.
+2023-07-09 09:36:48.711 +05:30 [DBG] Connection id "0HMS067LFL8L8" received FIN.
+2023-07-09 09:36:48.720 +05:30 [DBG] Connection id "0HMS067LFL8L7" accepted.
+2023-07-09 09:36:48.720 +05:30 [DBG] Connection id "0HMS067LFL8L8" accepted.
+2023-07-09 09:36:48.721 +05:30 [DBG] Connection id "0HMS067LFL8L7" started.
+2023-07-09 09:36:48.721 +05:30 [DBG] Connection id "0HMS067LFL8L8" started.
+2023-07-09 09:36:48.756 +05:30 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2023-07-09 09:36:48.756 +05:30 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2023-07-09 09:36:48.848 +05:30 [DBG] Connection id "0HMS067LFL8L8" stopped.
+2023-07-09 09:36:48.849 +05:30 [DBG] Connection id "0HMS067LFL8L7" stopped.
+2023-07-09 09:36:48.856 +05:30 [DBG] Connection id "0HMS067LFL8L7" sending FIN because: "The Socket transport's send loop completed gracefully."
+2023-07-09 09:36:48.856 +05:30 [DBG] Connection id "0HMS067LFL8L8" sending FIN because: "The Socket transport's send loop completed gracefully."
+2023-07-09 09:36:49.148 +05:30 [DBG] Connection id "0HMS067LFL8L9" accepted.
+2023-07-09 09:36:49.148 +05:30 [DBG] Connection id "0HMS067LFL8L9" started.
+2023-07-09 09:36:49.235 +05:30 [DBG] Connection 0HMS067LFL8L9 established using the following protocol: "Tls13"
+2023-07-09 09:36:49.320 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/swagger/index.html - -
+2023-07-09 09:36:49.353 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2023-07-09 09:36:49.383 +05:30 [DBG] No candidates found for the request path '/swagger/index.html'
+2023-07-09 09:36:49.383 +05:30 [DBG] Request did not match any endpoints
+2023-07-09 09:36:49.525 +05:30 [DBG] Response markup is scheduled to include browser refresh script injection.
+2023-07-09 09:36:49.628 +05:30 [DBG] Response markup was updated to include browser refresh script injection.
+2023-07-09 09:36:49.632 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/_vs/browserLink - -
+2023-07-09 09:36:49.632 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/_framework/aspnetcore-browser-refresh.js - -
+2023-07-09 09:36:49.634 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/swagger/index.html - - - 200 - text/html;charset=utf-8 315.8638ms
+2023-07-09 09:36:49.662 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 29.6902ms
+2023-07-09 09:36:49.709 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 77.0190ms
+2023-07-09 09:36:49.785 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/swagger/v1/swagger.json - -
+2023-07-09 09:36:49.786 +05:30 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2023-07-09 09:36:49.786 +05:30 [DBG] Request did not match any endpoints
+2023-07-09 09:36:49.942 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 156.4150ms
+2023-07-09 09:37:06.146 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/api/Player - -
+2023-07-09 09:37:06.150 +05:30 [DBG] 1 candidate(s) found for the request path '/api/Player'
+2023-07-09 09:37:06.154 +05:30 [DBG] Endpoint 'asp.netCoreWebApi.Controllers.PlayerController.GetPlayers (asp.netCoreWebApi)' with route pattern 'api/Player' is valid for the request path '/api/Player'
+2023-07-09 09:37:06.155 +05:30 [DBG] Request matched endpoint 'asp.netCoreWebApi.Controllers.PlayerController.GetPlayers (asp.netCoreWebApi)'
+2023-07-09 09:37:06.160 +05:30 [DBG] Static files was skipped as the request already matched an endpoint.
+2023-07-09 09:37:06.163 +05:30 [INF] Executing endpoint 'asp.netCoreWebApi.Controllers.PlayerController.GetPlayers (asp.netCoreWebApi)'
+2023-07-09 09:37:06.172 +05:30 [INF] Route matched with {action = "GetPlayers", controller = "Player"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[asp.netCoreWebApi.models.Dto.PlayerDTO]] GetPlayers() on controller asp.netCoreWebApi.Controllers.PlayerController (asp.netCoreWebApi).
+2023-07-09 09:37:06.174 +05:30 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2023-07-09 09:37:06.174 +05:30 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2023-07-09 09:37:06.174 +05:30 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2023-07-09 09:37:06.174 +05:30 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2023-07-09 09:37:06.175 +05:30 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2023-07-09 09:37:06.177 +05:30 [DBG] Executing controller factory for controller asp.netCoreWebApi.Controllers.PlayerController (asp.netCoreWebApi)
+2023-07-09 09:37:06.178 +05:30 [DBG] Executed controller factory for controller asp.netCoreWebApi.Controllers.PlayerController (asp.netCoreWebApi)
+2023-07-09 09:37:06.179 +05:30 [INF] get player list
+2023-07-09 09:37:06.182 +05:30 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter"]
+2023-07-09 09:37:06.186 +05:30 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2023-07-09 09:37:06.187 +05:30 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2023-07-09 09:37:06.188 +05:30 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2023-07-09 09:37:06.188 +05:30 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2023-07-09 09:37:06.189 +05:30 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter' and content type 'application/json' to write the response.
+2023-07-09 09:37:06.189 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[asp.netCoreWebApi.models.Dto.PlayerDTO, asp.netCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-07-09 09:37:06.383 +05:30 [INF] Executed action asp.netCoreWebApi.Controllers.PlayerController.GetPlayers (asp.netCoreWebApi) in 205.5869ms
+2023-07-09 09:37:06.384 +05:30 [INF] Executed endpoint 'asp.netCoreWebApi.Controllers.PlayerController.GetPlayers (asp.netCoreWebApi)'
+2023-07-09 09:37:06.384 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/api/Player - - - 200 100 application/json;+charset=utf-8 238.5783ms
+2023-07-09 09:55:50.333 +05:30 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-07-09 09:55:50.412 +05:30 [DBG] Hosting starting
+2023-07-09 09:55:50.741 +05:30 [INF] Now listening on: https://localhost:7282
+2023-07-09 09:55:50.741 +05:30 [INF] Now listening on: http://localhost:5062
+2023-07-09 09:55:50.741 +05:30 [DBG] Loaded hosting startup assembly asp.netCoreWebApi
+2023-07-09 09:55:50.741 +05:30 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2023-07-09 09:55:50.741 +05:30 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2023-07-09 09:55:50.742 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2023-07-09 09:55:50.742 +05:30 [INF] Hosting environment: Development
+2023-07-09 09:55:50.742 +05:30 [INF] Content root path: D:\project8.1\learning\asp.netCoreWebApi\asp.netCoreWebApi
+2023-07-09 09:55:50.742 +05:30 [DBG] Hosting started
+2023-07-09 09:55:50.975 +05:30 [DBG] Connection id "0HMS06I9T4P0M" accepted.
+2023-07-09 09:55:50.975 +05:30 [DBG] Connection id "0HMS06I9T4P0L" accepted.
+2023-07-09 09:55:50.977 +05:30 [DBG] Connection id "0HMS06I9T4P0M" started.
+2023-07-09 09:55:50.977 +05:30 [DBG] Connection id "0HMS06I9T4P0L" started.
+2023-07-09 09:55:50.990 +05:30 [DBG] Connection id "0HMS06I9T4P0L" received FIN.
+2023-07-09 09:55:50.992 +05:30 [DBG] Connection id "0HMS06I9T4P0M" received FIN.
+2023-07-09 09:55:51.015 +05:30 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2023-07-09 09:55:51.015 +05:30 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2023-07-09 09:55:51.077 +05:30 [DBG] Connection id "0HMS06I9T4P0L" stopped.
+2023-07-09 09:55:51.077 +05:30 [DBG] Connection id "0HMS06I9T4P0M" stopped.
+2023-07-09 09:55:51.082 +05:30 [DBG] Connection id "0HMS06I9T4P0M" sending FIN because: "The Socket transport's send loop completed gracefully."
+2023-07-09 09:55:51.082 +05:30 [DBG] Connection id "0HMS06I9T4P0L" sending FIN because: "The Socket transport's send loop completed gracefully."
+2023-07-09 09:55:51.374 +05:30 [DBG] Connection id "0HMS06I9T4P0N" accepted.
+2023-07-09 09:55:51.374 +05:30 [DBG] Connection id "0HMS06I9T4P0N" started.
+2023-07-09 09:55:51.475 +05:30 [DBG] Connection 0HMS06I9T4P0N established using the following protocol: "Tls13"
+2023-07-09 09:55:51.576 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/swagger/index.html - -
+2023-07-09 09:55:51.614 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2023-07-09 09:55:51.643 +05:30 [DBG] No candidates found for the request path '/swagger/index.html'
+2023-07-09 09:55:51.645 +05:30 [DBG] Request did not match any endpoints
+2023-07-09 09:55:51.792 +05:30 [DBG] Response markup is scheduled to include browser refresh script injection.
+2023-07-09 09:55:51.986 +05:30 [DBG] Response markup was updated to include browser refresh script injection.
+2023-07-09 09:55:51.994 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/swagger/index.html - - - 200 - text/html;charset=utf-8 418.9523ms
+2023-07-09 09:55:51.994 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/_framework/aspnetcore-browser-refresh.js - -
+2023-07-09 09:55:51.998 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/_vs/browserLink - -
+2023-07-09 09:55:52.015 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 20.1946ms
+2023-07-09 09:55:52.065 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 66.8816ms
+2023-07-09 09:55:52.157 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/swagger/v1/swagger.json - -
+2023-07-09 09:55:52.158 +05:30 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2023-07-09 09:55:52.158 +05:30 [DBG] Request did not match any endpoints
+2023-07-09 09:55:52.282 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 124.6246ms
+2023-07-09 09:56:00.514 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/api/Player - -
+2023-07-09 09:56:00.518 +05:30 [DBG] 1 candidate(s) found for the request path '/api/Player'
+2023-07-09 09:56:00.521 +05:30 [DBG] Endpoint 'asp.netCoreWebApi.Controllers.PlayerController.GetPlayers (asp.netCoreWebApi)' with route pattern 'api/Player' is valid for the request path '/api/Player'
+2023-07-09 09:56:00.523 +05:30 [DBG] Request matched endpoint 'asp.netCoreWebApi.Controllers.PlayerController.GetPlayers (asp.netCoreWebApi)'
+2023-07-09 09:56:00.527 +05:30 [DBG] Static files was skipped as the request already matched an endpoint.
+2023-07-09 09:56:00.530 +05:30 [INF] Executing endpoint 'asp.netCoreWebApi.Controllers.PlayerController.GetPlayers (asp.netCoreWebApi)'
+2023-07-09 09:56:00.549 +05:30 [INF] Route matched with {action = "GetPlayers", controller = "Player"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[asp.netCoreWebApi.models.Dto.PlayerDTO]] GetPlayers() on controller asp.netCoreWebApi.Controllers.PlayerController (asp.netCoreWebApi).
+2023-07-09 09:56:00.551 +05:30 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2023-07-09 09:56:00.551 +05:30 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2023-07-09 09:56:00.552 +05:30 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2023-07-09 09:56:00.552 +05:30 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2023-07-09 09:56:00.552 +05:30 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2023-07-09 09:56:00.556 +05:30 [DBG] Executing controller factory for controller asp.netCoreWebApi.Controllers.PlayerController (asp.netCoreWebApi)
+2023-07-09 09:56:00.558 +05:30 [DBG] Executed controller factory for controller asp.netCoreWebApi.Controllers.PlayerController (asp.netCoreWebApi)
+2023-07-09 09:56:00.560 +05:30 [INF] get player list
+2023-07-09 09:56:00.563 +05:30 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter"]
+2023-07-09 09:56:00.565 +05:30 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2023-07-09 09:56:00.566 +05:30 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2023-07-09 09:56:00.566 +05:30 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2023-07-09 09:56:00.567 +05:30 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2023-07-09 09:56:00.567 +05:30 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter' and content type 'application/json' to write the response.
+2023-07-09 09:56:00.568 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[asp.netCoreWebApi.models.Dto.PlayerDTO, asp.netCoreWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-07-09 09:56:00.788 +05:30 [INF] Executed action asp.netCoreWebApi.Controllers.PlayerController.GetPlayers (asp.netCoreWebApi) in 232.0297ms
+2023-07-09 09:56:00.789 +05:30 [INF] Executed endpoint 'asp.netCoreWebApi.Controllers.PlayerController.GetPlayers (asp.netCoreWebApi)'
+2023-07-09 09:56:00.790 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/api/Player - - - 200 100 application/json;+charset=utf-8 275.7781ms
+2023-07-09 09:56:47.202 +05:30 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-07-09 09:56:47.293 +05:30 [DBG] Hosting starting
+2023-07-09 09:56:47.746 +05:30 [INF] Now listening on: https://localhost:7282
+2023-07-09 09:56:47.746 +05:30 [INF] Now listening on: http://localhost:5062
+2023-07-09 09:56:47.747 +05:30 [DBG] Loaded hosting startup assembly asp.netCoreWebApi
+2023-07-09 09:56:47.747 +05:30 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2023-07-09 09:56:47.747 +05:30 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2023-07-09 09:56:47.747 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2023-07-09 09:56:47.748 +05:30 [INF] Hosting environment: Development
+2023-07-09 09:56:47.748 +05:30 [INF] Content root path: D:\project8.1\learning\asp.netCoreWebApi\asp.netCoreWebApi
+2023-07-09 09:56:47.748 +05:30 [DBG] Hosting started
+2023-07-09 09:56:47.830 +05:30 [DBG] Connection id "0HMS06IQRBJL0" received FIN.
+2023-07-09 09:56:47.830 +05:30 [DBG] Connection id "0HMS06IQRBJL1" received FIN.
+2023-07-09 09:56:47.835 +05:30 [DBG] Connection id "0HMS06IQRBJL1" accepted.
+2023-07-09 09:56:47.845 +05:30 [DBG] Connection id "0HMS06IQRBJL0" accepted.
+2023-07-09 09:56:47.846 +05:30 [DBG] Connection id "0HMS06IQRBJL1" started.
+2023-07-09 09:56:47.853 +05:30 [DBG] Connection id "0HMS06IQRBJL0" started.
+2023-07-09 09:56:47.912 +05:30 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2023-07-09 09:56:47.912 +05:30 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2023-07-09 09:56:48.022 +05:30 [DBG] Connection id "0HMS06IQRBJL1" stopped.
+2023-07-09 09:56:48.022 +05:30 [DBG] Connection id "0HMS06IQRBJL0" stopped.
+2023-07-09 09:56:48.056 +05:30 [DBG] Connection id "0HMS06IQRBJL0" sending FIN because: "The Socket transport's send loop completed gracefully."
+2023-07-09 09:56:48.058 +05:30 [DBG] Connection id "0HMS06IQRBJL1" sending FIN because: "The Socket transport's send loop completed gracefully."
+2023-07-09 09:56:48.381 +05:30 [DBG] Connection id "0HMS06IQRBJL2" accepted.
+2023-07-09 09:56:48.382 +05:30 [DBG] Connection id "0HMS06IQRBJL2" started.
+2023-07-09 09:56:48.442 +05:30 [DBG] Connection 0HMS06IQRBJL2 established using the following protocol: "Tls13"
+2023-07-09 09:56:48.543 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/swagger/index.html - -
+2023-07-09 09:56:48.579 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2023-07-09 09:56:48.617 +05:30 [DBG] No candidates found for the request path '/swagger/index.html'
+2023-07-09 09:56:48.618 +05:30 [DBG] Request did not match any endpoints
+2023-07-09 09:56:48.839 +05:30 [DBG] Response markup is scheduled to include browser refresh script injection.
+2023-07-09 09:56:48.960 +05:30 [DBG] Response markup was updated to include browser refresh script injection.
+2023-07-09 09:56:48.962 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/swagger/index.html - - - 200 - text/html;charset=utf-8 422.1964ms
+2023-07-09 09:56:48.971 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/_vs/browserLink - -
+2023-07-09 09:56:48.971 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/_framework/aspnetcore-browser-refresh.js - -
+2023-07-09 09:56:48.993 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 21.3949ms
+2023-07-09 09:56:49.030 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 58.6014ms
+2023-07-09 09:56:49.109 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7282/swagger/v1/swagger.json - -
+2023-07-09 09:56:49.109 +05:30 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2023-07-09 09:56:49.110 +05:30 [DBG] Request did not match any endpoints
+2023-07-09 09:56:49.240 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7282/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 130.7797ms
