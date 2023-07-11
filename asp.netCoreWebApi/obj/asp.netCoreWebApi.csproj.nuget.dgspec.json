@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\project8.1\\learning\\asp.netCoreWebApi\\asp.netCoreWebApi\\asp.netCoreWebApi.csproj": {}
+    "D:\\project8.1\\learning\\PlayerCRUDApiDotNetCore\\asp.netCoreWebApi\\asp.netCoreWebApi.csproj": {}
   },
   "projects": {
-    "D:\\project8.1\\learning\\asp.netCoreWebApi\\asp.netCoreWebApi\\asp.netCoreWebApi.csproj": {
+    "D:\\project8.1\\learning\\PlayerCRUDApiDotNetCore\\asp.netCoreWebApi\\asp.netCoreWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\project8.1\\learning\\asp.netCoreWebApi\\asp.netCoreWebApi\\asp.netCoreWebApi.csproj",
+        "projectUniqueName": "D:\\project8.1\\learning\\PlayerCRUDApiDotNetCore\\asp.netCoreWebApi\\asp.netCoreWebApi.csproj",
         "projectName": "asp.netCoreWebApi",
-        "projectPath": "D:\\project8.1\\learning\\asp.netCoreWebApi\\asp.netCoreWebApi\\asp.netCoreWebApi.csproj",
+        "projectPath": "D:\\project8.1\\learning\\PlayerCRUDApiDotNetCore\\asp.netCoreWebApi\\asp.netCoreWebApi.csproj",
         "packagesPath": "C:\\Users\\anupk\\.nuget\\packages\\",
-        "outputPath": "D:\\project8.1\\learning\\asp.netCoreWebApi\\asp.netCoreWebApi\\obj\\",
+        "outputPath": "D:\\project8.1\\learning\\PlayerCRUDApiDotNetCore\\asp.netCoreWebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\anupk\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.AspNetCore.JsonPatch": {
               "target": "Package",
               "version": "[7.0.8, )"

@@ -1,12 +1,11 @@
-﻿using asp.netCoreWebApi.Data;
-using asp.netCoreWebApi.logging;
+﻿using asp.netCoreWebApi.logging;
 using asp.netCoreWebApi.models;
 using asp.netCoreWebApi.models.Dto;
+using asp.netCoreWebApi.Repository.IRepository;
+using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Data;
-using System.Reflection;
+using System.Net;
 
 namespace asp.netCoreWebApi.Controllers
 {
@@ -23,20 +22,46 @@ namespace asp.netCoreWebApi.Controllers
 
         // custom logger
         private readonly ILogging _logger;
-        private readonly ApplicationDbContext _db;
-        public PlayerController(ILogging logger, ApplicationDbContext db)
+        private readonly IPlayerRepository _playerRepo;
+        private readonly IMapper _mapper;
+        protected APIResponse _response;
+
+        public PlayerController(
+            ILogging logger, 
+            IPlayerRepository playerRepo,
+            IMapper mapper
+        )
         {
             _logger = logger;
-            _db = db;
+            _playerRepo = playerRepo;
+            _mapper = mapper;
+            this._response = new();
         }
 
         // get player list
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<IEnumerable<PlayerDTO>> GetPlayers()
+        public async Task<ActionResult<APIResponse>> GetPlayers()
         {
-            _logger.LogInformation("get player list", "success");
-            return Ok(_db.Players.ToList());
+            try
+            {
+                _logger.LogInformation("get player list", "success");
+                IEnumerable<Player> playerList = await _playerRepo.GetAllAsync();
+                _response.Result = _mapper.Map<List<PlayerDTO>>(playerList);
+                _response.StatusCode = HttpStatusCode.OK;
+                _response.IsSuccess = true;
+                return Ok(_response);
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.StatusCode = HttpStatusCode.InternalServerError;
+                _response.ErrorMessages = new List<String>() 
+                { 
+                    ex.ToString()
+                };
+                return _response;
+            }
         }
 
         // get player by id
@@ -47,82 +72,149 @@ namespace asp.netCoreWebApi.Controllers
         //[ProducesResponseType(200, Type=typeof(PlayerDTO))]
         //[ProducesResponseType(400)]
         //[ProducesResponseType(404)]
-        public ActionResult<PlayerDTO> getPlayer(int id)
+        public async Task<ActionResult<APIResponse>> getPlayer(int id)
         {
-            if (id == 0)
+            try
             {
-                _logger.LogInformation("Bad request!", "error");
-                return BadRequest();
+                if (id == 0)
+                {
+                    _logger.LogInformation("Bad request!", "error");
+                    _response.IsSuccess = false;
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    return BadRequest(_response);
+                }
+                var player = await _playerRepo.GetAsync(u => u.Id == id);
+                if (player == null)
+                {
+                    _response.IsSuccess = false;
+                    _response.StatusCode = HttpStatusCode.NotFound;
+                    return NotFound(_response);
+                }
+                _response.Result = _mapper.Map<PlayerDTO>(player);
+                _response.StatusCode = HttpStatusCode.OK;
+                _response.IsSuccess = true;
+                return Ok(_response);
             }
-            var player = _db.Players.FirstOrDefault(u => u.Id == id);
-            if (player == null)
+            catch(Exception ex)
             {
-                return NotFound();
+                _response.IsSuccess = false;
+                _response.StatusCode = HttpStatusCode.InternalServerError;
+                _response.ErrorMessages = new List<String>()
+                {
+                    ex.ToString()
+                };
+                return _response;
             }
-            return Ok(player);
         }
 
         // add player in store
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<PlayerDTO> AddPlayer([FromBody] PlayerDTO playerDTO)
+        public async Task<ActionResult<APIResponse>> AddPlayer([FromBody] PlayerCreateDTO playerCreateDTO)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
-            if (_db.Players.FirstOrDefault(u => u.Name.ToLower() == playerDTO.Name.ToLower()) != null)
+            try
             {
-                ModelState.AddModelError("CustomError", "Player Already Exists!");
-                return BadRequest(ModelState);
-            }
+                //if (!ModelState.IsValid)
+                //{
+                //    return BadRequest(ModelState);
+                //}
+                if (
+                    await _playerRepo.GetAsync(
+                        u => u.Name.ToLower() == playerCreateDTO.Name.ToLower()
+                    )
+                    != null
+                )
+                {
+                    //ModelState.AddModelError("CustomError", "Player Already Exists!");
+                    _response.IsSuccess = false;
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    _response.ErrorMessages = new List<string>()
+                    {
+                        "Player Already Exists!"
+                    };
+                    return BadRequest(_response);
+                }
 
-            if (playerDTO == null)
-            {
-                return BadRequest(playerDTO);
-            }
+                if (playerCreateDTO == null)
+                {
+                    _response.IsSuccess = false;
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    return BadRequest(_response);
+                }
+                Player player = _mapper.Map<Player>(playerCreateDTO);
+                //Player model = new()
+                //{
+                //   Name = playerCreateDTO.Name,
+                //   CreatedAt = DateTime.Now
+                //};
 
-            if (playerDTO.Id > 0)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError);
+                await _playerRepo.CreateAsync(player);
+                _response.Result = player;
+                _response.StatusCode = HttpStatusCode.Created;
+                _response.IsSuccess = true;
+                return CreatedAtRoute("GetPlayer", new { Id = player.Id }, _response);
             }
-
-            Player model = new()
+            catch(Exception ex)
             {
-               Name = playerDTO.Name,
-               CreatedAt = DateTime.Now
-            };
-            _db.Players.Add(model);
-            _db.SaveChanges();
-            return CreatedAtRoute("GetPlayer", new { id = playerDTO.Id }, playerDTO);
+                _response.IsSuccess = false;
+                _response.StatusCode = HttpStatusCode.InternalServerError;
+                _response.ErrorMessages = new List<string>() 
+                { 
+                    ex.ToString()
+                };
+
+                return _response;
+            }
         }
 
         // update player in store
-        [HttpPut]
+        [HttpPut("{id:int}", Name = "UpdatePlayer")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<PlayerDTO> UpdatePlayer([FromBody] PlayerDTO playerDTO)
+        public async Task<ActionResult<APIResponse>> UpdatePlayer([FromBody] PlayerUpdateDTO playerUpdateDTO)
         {
-
-            if (playerDTO.Id > 0)
+            try
             {
-                var player = _db.Players.FirstOrDefault(x => x.Id == playerDTO.Id);
+                if (playerUpdateDTO == null || playerUpdateDTO.Id == 0)
+                {
+                    _response.IsSuccess = false;
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    return BadRequest(_response);
+                }
+
+                var player = await _playerRepo.GetAsync(x => x.Id == playerUpdateDTO.Id, tracked: false);
                 if (player == null)
                 {
-                    return NotFound();
+                    _response.IsSuccess = false;
+                    _response.StatusCode = HttpStatusCode.NotFound;
+                    return NotFound(_response);
                 }
-                Player model = new Player() { 
-                    Name = player.Name,
-                    CreatedAt = DateTime.Now
-                };
-                _db.Players.Update(model);
-                _db.SaveChanges();
-                return CreatedAtRoute("GetPlayer", new { id = playerDTO.Id }, playerDTO);
+
+                Player model = _mapper.Map<Player>(playerUpdateDTO);
+
+                //Player model = new () { 
+                //    Id = playerUpdateDTO.Id,
+                //    Name = playerUpdateDTO.Name,
+                //};
+
+                await _playerRepo.UpdateAsync(model);
+                _response.StatusCode = HttpStatusCode.NoContent;
+                _response.IsSuccess = true;
+                return Ok(_response);
             }
-            return BadRequest();
+            catch(Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.StatusCode = HttpStatusCode.InternalServerError;
+                _response.ErrorMessages = new List<string>()
+                {
+                    ex.ToString()
+                };
+                return _response;
+            }
         }
 
         // update specific field(s) in player
@@ -130,70 +222,109 @@ namespace asp.netCoreWebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult PartialUpdatePlayer(int id, JsonPatchDocument<PlayerDTO> playerDTO)
+        public async Task<ActionResult<APIResponse>> PartialUpdatePlayer(
+            int id, 
+            JsonPatchDocument<PlayerUpdateDTO> playerPartialUpdateDTO
+        )
         {
-            if(playerDTO == null && id <= 0)
+            try
             {
-                return BadRequest();
+                if (playerPartialUpdateDTO == null || id == 0)
+                {
+                    return BadRequest();
+                }
+
+                var player = await _playerRepo.GetAsync(x => x.Id == id, tracked: false);
+                PlayerUpdateDTO playerDTO = _mapper.Map<PlayerUpdateDTO>(player);
+                //PlayerUpdateDTO playerDTOModel = new() { 
+                //    Id = player.Id,
+                //    Name = player.Name,
+                //};
+                if (player == null)
+                {
+                    _response.IsSuccess = false;
+                    _response.StatusCode = HttpStatusCode.NotFound;
+                    return NotFound(_response);
+                }
+
+                playerPartialUpdateDTO.ApplyTo(playerDTO, ModelState);
+                if (!ModelState.IsValid)
+                {
+                    _response.IsSuccess = false;
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    return BadRequest(_response);
+                }
+
+                Player model = _mapper.Map<Player>(playerDTO);
+                //Player model = new Player() {
+                //    Id = playerDTOModel.Id,
+                //    Name = playerDTOModel.Name,
+                //    CreatedAt = DateTime.Now,
+                //};
+
+                await _playerRepo.UpdateAsync(model);
+                _response.StatusCode = HttpStatusCode.OK;
+                _response.Result = model;
+                // return CreatedAtRoute("Get Player", new { id }, player);
+                return Ok(_response);
+
+                //foreach (PropertyInfo prop in playerDTO.GetType().GetProperties())
+                //{
+                //    if (prop != null && prop.Name != null)
+                //    {
+                //        // player[prop.Name.ToString()] = prop.GetValue(playerDTO, null);
+                //        // PlayerStore.playerList.ForEach(x => x[prop] = prop.GetValue(playerDTO, null));
+                //        return CreatedAtRoute("GetPlayer", new { id = playerDTO.Id }, playerDTO);
+                //    }
+                //}
             }
-            var player = _db.Players.AsNoTracking().FirstOrDefault(x => x.Id == id);
-            if(player == null)
+            catch(Exception ex)
             {
-                return NotFound();
+                _response.IsSuccess = false;
+                _response.StatusCode = HttpStatusCode.InternalServerError;
+                _response.ErrorMessages = new List<String>()
+                {
+                    ex.ToString()
+                };
+                return _response;
             }
-
-            PlayerDTO playerDTOModel = new() { 
-                Id = player.Id,
-                Name = player.Name,
-            };
-            playerDTO.ApplyTo(playerDTOModel, ModelState);
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            Player model = new Player() {
-                Id = playerDTOModel.Id,
-                Name = playerDTOModel.Name,
-                CreatedAt = DateTime.Now,
-            };
-
-            _db.Players.Update(model);
-            _db.SaveChanges();
-            // return CreatedAtRoute("Get Player", new { id }, player);
-            return Ok(player);
-
-            //foreach (PropertyInfo prop in playerDTO.GetType().GetProperties())
-            //{
-            //    if (prop != null && prop.Name != null)
-            //    {
-            //        // player[prop.Name.ToString()] = prop.GetValue(playerDTO, null);
-            //        // PlayerStore.playerList.ForEach(x => x[prop] = prop.GetValue(playerDTO, null));
-            //        return CreatedAtRoute("GetPlayer", new { id = playerDTO.Id }, playerDTO);
-            //    }
-            //}
-            
-            
         }
 
         [HttpDelete("{id:int}", Name = "DeletePlayer")]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public IActionResult DeletePlayer(int id)
+        public async Task<ActionResult<APIResponse>> DeletePlayer(int id)
         {
-            if(id == 0)
+            try
             {
-                return BadRequest();
-            }
-            var player = _db.Players.FirstOrDefault(u => u.Id == id);
-            if(player == null)
+                if (id == 0)
+                {
+                    _response.IsSuccess = false;
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    return BadRequest(_response);
+                }
+                var player = await _playerRepo.GetAsync(u => u.Id == id);
+                if (player == null)
+                {
+                    _response.IsSuccess = false;
+                    _response.StatusCode = HttpStatusCode.NotFound;
+                    return NotFound(_response);
+                }
+                await _playerRepo.RemoveAsync(player);
+                _response.StatusCode = HttpStatusCode.NoContent;
+                _response.IsSuccess = true;
+                return Ok(_response);
+            }catch(Exception ex)
             {
-                return NotFound();
+                _response.IsSuccess = false;
+                _response.StatusCode = HttpStatusCode.InternalServerError;
+                _response.ErrorMessages = new List<String>() 
+                {
+                    ex.ToString()
+                };
+                return _response;
             }
-            _db.Players.Remove(player);
-            _db.SaveChanges();
-            return NoContent();
         }
 
     }

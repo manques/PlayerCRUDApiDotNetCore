@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using asp.netCoreWebApi.Data;
 
@@ -11,9 +12,11 @@ using asp.netCoreWebApi.Data;
 namespace asp.netCoreWebApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230710231951_forien key")]
+    partial class forienkey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,25 +48,25 @@ namespace asp.netCoreWebApi.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 7, 11, 8, 19, 28, 423, DateTimeKind.Local).AddTicks(5194),
+                            CreatedAt = new DateTime(2023, 7, 11, 4, 49, 51, 747, DateTimeKind.Local).AddTicks(8650),
                             Name = "anup"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 7, 11, 8, 19, 28, 423, DateTimeKind.Local).AddTicks(5207),
+                            CreatedAt = new DateTime(2023, 7, 11, 4, 49, 51, 747, DateTimeKind.Local).AddTicks(8661),
                             Name = "vivek"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 7, 11, 8, 19, 28, 423, DateTimeKind.Local).AddTicks(5208),
+                            CreatedAt = new DateTime(2023, 7, 11, 4, 49, 51, 747, DateTimeKind.Local).AddTicks(8662),
                             Name = "abhishek"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2023, 7, 11, 8, 19, 28, 423, DateTimeKind.Local).AddTicks(5208),
+                            CreatedAt = new DateTime(2023, 7, 11, 4, 49, 51, 747, DateTimeKind.Local).AddTicks(8663),
                             Name = "sushil"
                         });
                 });

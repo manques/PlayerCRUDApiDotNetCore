@@ -13,6 +13,7 @@ namespace asp.netCoreWebApi.Data
         }
 
         public DbSet<Player> Players { get; set; }
+        public DbSet<PlayerNumber> PlayerNumbers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

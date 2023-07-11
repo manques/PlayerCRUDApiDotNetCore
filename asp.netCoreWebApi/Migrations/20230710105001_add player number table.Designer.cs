@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using asp.netCoreWebApi.Data;
 
@@ -11,9 +12,11 @@ using asp.netCoreWebApi.Data;
 namespace asp.netCoreWebApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230710105001_add player number table")]
+    partial class addplayernumbertable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,25 +48,25 @@ namespace asp.netCoreWebApi.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 7, 11, 8, 19, 28, 423, DateTimeKind.Local).AddTicks(5194),
+                            CreatedAt = new DateTime(2023, 7, 10, 16, 20, 1, 241, DateTimeKind.Local).AddTicks(9395),
                             Name = "anup"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 7, 11, 8, 19, 28, 423, DateTimeKind.Local).AddTicks(5207),
+                            CreatedAt = new DateTime(2023, 7, 10, 16, 20, 1, 241, DateTimeKind.Local).AddTicks(9409),
                             Name = "vivek"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 7, 11, 8, 19, 28, 423, DateTimeKind.Local).AddTicks(5208),
+                            CreatedAt = new DateTime(2023, 7, 10, 16, 20, 1, 241, DateTimeKind.Local).AddTicks(9410),
                             Name = "abhishek"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2023, 7, 11, 8, 19, 28, 423, DateTimeKind.Local).AddTicks(5208),
+                            CreatedAt = new DateTime(2023, 7, 10, 16, 20, 1, 241, DateTimeKind.Local).AddTicks(9411),
                             Name = "sushil"
                         });
                 });
@@ -76,9 +79,6 @@ namespace asp.netCoreWebApi.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PlayerID")
-                        .HasColumnType("int");
-
                     b.Property<string>("SpecialDetails")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -88,20 +88,7 @@ namespace asp.netCoreWebApi.Migrations
 
                     b.HasKey("PlayerNo");
 
-                    b.HasIndex("PlayerID");
-
                     b.ToTable("PlayerNumbers");
-                });
-
-            modelBuilder.Entity("asp.netCoreWebApi.models.PlayerNumber", b =>
-                {
-                    b.HasOne("asp.netCoreWebApi.models.Player", "Player")
-                        .WithMany()
-                        .HasForeignKey("PlayerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Player");
                 });
 #pragma warning restore 612, 618
         }

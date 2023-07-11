@@ -1,5 +1,8 @@
+using asp.netCoreWebApi;
 using asp.netCoreWebApi.Data;
 using asp.netCoreWebApi.logging;
+using asp.netCoreWebApi.Repository;
+using asp.netCoreWebApi.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -10,6 +13,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"))
 );
+// player repo
+builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
+// player number repo
+builder.Services.AddScoped<IPlayerNumberRepository, PlayerNumberRepository>();
+// auto mapper
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 
 //Log.Logger = new LoggerConfiguration().MinimumLevel.Debug()
 //    .WriteTo.File("log/playerLogs.txt", rollingInterval: RollingInterval.Day)
